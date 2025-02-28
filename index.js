@@ -26,6 +26,21 @@ class hashMap{
         this.data[index].push([key, value])
     }
 
+    //get an item from a desired key
+    getItem(key){
+        let index = this.hash(key);
+
+        if (!this.data[index]){
+            return null;
+        }
+
+        for (let item of this.data[index]){
+            if (item[0] === key){
+                return item[1]
+            }
+        }
+    }
+
 
 }
 
@@ -33,6 +48,9 @@ class hashMap{
 
 let test = new hashMap();
 test.setItem("pedro", "picapiedra")
-console.log(test.data)
 
-console.log(test.hash("231412235"));
+console.log("here we are using hash function to get hash code from (pedro) key: "+test.hash("pedro"));
+
+console.log("this function is geting an element from the key(pedro): "+test.getItem("pedro"))
+
+console.log(test.data)
